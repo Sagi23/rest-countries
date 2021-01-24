@@ -1,14 +1,21 @@
+// .grid {
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+//   width: 60%;
+//   margin: 3rem auto 0;
+//   gap: 3rem;
+//   justify-items: center;
+// }
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 60%;
+  display: flex;
+  width: 70%;
   margin: 3rem auto 0;
   gap: 3rem;
-  justify-items: center;
+  justify-content: center;
 }
 
 .goBackBtn {
-  width: 60%;
+  width: 80%;
   margin: 6rem auto 0;
   display: flex;
   button {
@@ -22,7 +29,7 @@
 }
 
 .barChart {
-  width: 60%;
+  width: 80%;
   margin: 3rem auto 0;
 }
 
@@ -36,16 +43,41 @@
 }
 
 .right {
-  width: 600px;
-  height: 400px;
+  width: 400px;
+
   .subTitle {
     font-weight: 500;
   }
   .borderLink {
-    padding: 0px 10px;
+    padding: 0.1rem 1.5rem;
     margin: 0.3rem;
     color: rgb(68, 180, 255);
     cursor: pointer;
     box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
+  }
+  .borderContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    display: block;
+    width: 80%;
+  }
+  .flag {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid rgba(0, 0, 0, 0.137);
+    }
+  }
+  .barChart {
+    margin: 0 auto;
+  }
+  .right {
+    width: 100%;
   }
 }

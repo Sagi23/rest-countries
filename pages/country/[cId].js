@@ -71,15 +71,17 @@ const CountryDetail = ({
             {borders.length !== 0 && (
               <div>
                 <span className={styles.subTitle}>Border Countries: </span>
-                {borders.map((b) => (
-                  <span
-                    key={b}
-                    className={styles.borderLink}
-                    onClick={() => router.push(`/country/${b}`)}
-                  >
-                    {`${b}`}
-                  </span>
-                ))}
+                <div className={styles.borderContainer}>
+                  {borders.map((b) => (
+                    <span
+                      key={b}
+                      className={styles.borderLink}
+                      onClick={() => router.push(`/country/${b}`)}
+                    >
+                      {`${b}`}
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -110,9 +112,7 @@ const CountryDetail = ({
               },
             }}
           />
-        ) : (
-          ""
-        )}
+        ) : null}
       </div>
     </div>
   );
@@ -130,7 +130,6 @@ export const getServerSideProps = async (pageContext) => {
   const {
     data: { confirmed, recovered, deaths },
   } = await covid.get(`countries/${nameOfCountry}`);
-  console.log(confirmed);
   return {
     props: {
       name: data.name,

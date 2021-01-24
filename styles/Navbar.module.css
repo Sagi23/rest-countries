@@ -39,4 +39,10 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 18px;
+  }
+}
 /*# sourceMappingURL=Navbar.module.css.map */
