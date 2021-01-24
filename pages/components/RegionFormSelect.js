@@ -6,8 +6,6 @@ import styles from "../../styles/RegionFormSelect.module.css";
 const RegionFormSelect = ({ setInitialState }) => {
   const [value, setValue] = useState("");
 
-  console.log(value);
-
   const changeRegion = async (region) => {
     const { data } = await regionCountries.get(region);
     console.log(data);

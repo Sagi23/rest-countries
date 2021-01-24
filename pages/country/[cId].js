@@ -105,6 +105,15 @@ const CountryDetail = ({
               ],
             }}
             options={{
+              tooltips: {
+                callbacks: {
+                  label: function (tooltipItem, data) {
+                    return tooltipItem.yLabel
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+                  },
+                },
+              },
               legend: { display: false },
               title: {
                 display: true,
