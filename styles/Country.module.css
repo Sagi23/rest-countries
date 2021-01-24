@@ -11,10 +11,15 @@
      object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  cursor: pointer;
 }
 
 .details {
   margin: 1rem;
+}
+
+.details h3 {
+  cursor: pointer;
 }
 
 .details ul {

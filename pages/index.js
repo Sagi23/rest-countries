@@ -4,6 +4,7 @@ import { countries } from "./api/countries";
 import { useEffect, useState } from "react";
 import CountryList from "./components/CountryList";
 import RegionFormSelect from "./components/RegionFormSelect";
+import SearchForm from "./components/SearchForm";
 
 export default function Home() {
   const [initialState, setInitialState] = useState([]);
@@ -38,11 +39,13 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <input type="text" />
-        <RegionFormSelect />
+      <div className={styles.searchContainer}>
+        <SearchForm />
+        <RegionFormSelect setInitialState={setInitialState} />
       </div>
-      <CountryList initialStates={initialState} />
+      <div className={styles.countryContainer}>
+        <CountryList initialStates={initialState} />
+      </div>
     </div>
   );
 }

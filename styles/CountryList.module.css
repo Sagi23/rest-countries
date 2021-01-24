@@ -5,10 +5,9 @@
   gap: 3rem;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 80%;
   margin: 0 auto;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 /*# sourceMappingURL=CountryList.module.css.map */

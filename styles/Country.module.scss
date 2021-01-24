@@ -9,10 +9,14 @@
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    cursor: pointer;
   }
 }
 
 .details {
+  h3 {
+    cursor: pointer;
+  }
   margin: 1rem;
   ul {
     list-style-type: none;
