@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { countries } from "./api/countries";
 import { useEffect, useState } from "react";
 import CountryList from "./components/CountryList";
+import RegionFormSelect from "./components/RegionFormSelect";
 
 export default function Home() {
   const [initialState, setInitialState] = useState([]);
@@ -37,7 +38,10 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Home</h1>
+      <div>
+        <input type="text" />
+        <RegionFormSelect />
+      </div>
       <CountryList initialStates={initialState} />
     </div>
   );

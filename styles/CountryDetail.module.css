@@ -1,13 +1,30 @@
 .grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  width: 60%;
+  margin: 3rem auto 0;
+  gap: 3rem;
+  justify-items: center;
+}
+
+.goBackBtn {
+  width: 60%;
+  margin: 6rem auto 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 80%;
-  margin: 6rem auto 0;
-  gap: 3rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.goBackBtn button {
+  padding: 0.2rem 1rem;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.2rem;
+  -webkit-box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
+          box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
 }
 
 .flag img {
@@ -25,5 +42,14 @@
 
 .right .subTitle {
   font-weight: 500;
+}
+
+.right .borderLink {
+  padding: 0px 10px;
+  margin: 0.3rem;
+  color: #44b4ff;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
+          box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
 }
 /*# sourceMappingURL=CountryDetail.module.css.map */

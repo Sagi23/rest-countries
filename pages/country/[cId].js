@@ -1,6 +1,7 @@
 import React from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
+import { BiArrowBack } from "react-icons/bi";
 import { countryDet } from "../api/countries";
 import styles from "../../styles/CountryDetail.module.css";
 
@@ -18,8 +19,12 @@ const CountryDetail = ({
 }) => {
   const router = useRouter();
   return (
-    <div>
-      <button onClick={() => router.back()}>Go Back</button>
+    <div className={styles.CountryDetail}>
+      <div className={styles.goBackBtn}>
+        <button onClick={() => router.back()}>
+          <BiArrowBack /> Go Back
+        </button>
+      </div>
       <div className={styles.grid}>
         <div className={styles.flag}>
           <img src={flag} alt={name} />
@@ -68,7 +73,7 @@ const CountryDetail = ({
                     className={styles.borderLink}
                     onClick={() => router.push(`/country/${b}`)}
                   >
-                    {` ${b} `}
+                    {`${b}`}
                   </span>
                 ))}
               </div>
