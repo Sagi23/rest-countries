@@ -17,7 +17,6 @@ const CountryDetail = ({
   borders,
 }) => {
   const router = useRouter();
-
   return (
     <div>
       <button onClick={() => router.back()}>Go Back</button>
@@ -53,13 +52,27 @@ const CountryDetail = ({
               <span className={styles.subTitle}>Capital:</span> {capital}
             </p>
             <p>
-              <span className={styles.subTitle}>Currencies:</span>{" "}
-              {currencies.map((c) => `${c.name} - ${c.symbol}`)}
+              <span className={styles.subTitle}>Currencies:</span>
+              {currencies.map((c) => ` ${c.name} - ${c.symbol} `)}
             </p>
             <p>
-              <span className={styles.subTitle}>Languages:</span>{" "}
-              {languages.map((l) => l.name)}
+              <span className={styles.subTitle}>Languages:</span>
+              {languages.map((l) => ` ${l.name} `)}
             </p>
+            {borders.length !== 0 && (
+              <div>
+                <span className={styles.subTitle}>Border Countries: </span>
+                {borders.map((b) => (
+                  <span
+                    key={b}
+                    className={styles.borderLink}
+                    onClick={() => router.push(`/country/${b}`)}
+                  >
+                    {` ${b} `}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -69,7 +82,6 @@ const CountryDetail = ({
 
 export const getServerSideProps = async (pageContext) => {
   const nameOfCountry = pageContext.query.cId;
-  console.log(nameOfCountry);
   if (!nameOfCountry) {
     return {
       notFound: true,
@@ -79,16 +91,16 @@ export const getServerSideProps = async (pageContext) => {
   const { data } = await countryDet.get(nameOfCountry);
   return {
     props: {
-      name: data[0].name,
-      population: data[0].population,
-      region: data[0].region,
-      subRegion: data[0].subregion,
-      flag: data[0].flag,
-      capital: data[0].capital,
-      nativeName: data[0].nativeName,
-      currencies: data[0].currencies,
-      languages: data[0].languages,
-      borders: data[0].borders,
+      name: data.name,
+      population: data.population,
+      region: data.region,
+      subRegion: data.subregion,
+      flag: data.flag,
+      capital: data.capital,
+      nativeName: data.nativeName,
+      currencies: data.currencies,
+      languages: data.languages,
+      borders: data.borders,
     },
   };
 };
