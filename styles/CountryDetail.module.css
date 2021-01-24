@@ -27,6 +27,11 @@
           box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
 }
 
+.barChart {
+  width: 60%;
+  margin: 3rem auto 0;
+}
+
 .flag img {
   width: 600px;
   height: 400px;

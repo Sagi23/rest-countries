@@ -2,7 +2,8 @@ import React from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
-import { countryDet } from "../api/countries";
+import { countryDet, covid } from "../api/countries";
+import { Bar } from "react-chartjs-2";
 import styles from "../../styles/CountryDetail.module.css";
 
 const CountryDetail = ({
@@ -16,6 +17,9 @@ const CountryDetail = ({
   currencies,
   languages,
   borders,
+  confirmed,
+  recovered,
+  deaths,
 }) => {
   const router = useRouter();
   return (
@@ -81,6 +85,35 @@ const CountryDetail = ({
           </div>
         </div>
       </div>
+      <div className={styles.barChart}>
+        {confirmed ? (
+          <Bar
+            data={{
+              labels: ["Infected", "Recovered", "Deaths"],
+              datasets: [
+                {
+                  label: "People",
+                  backgroundColor: [
+                    "rgba(0, 0, 255, 0.5)",
+                    "rgba(0, 128, 0, 0.5)",
+                    "rgba(255, 0, 0, 0.5)",
+                  ],
+                  data: [confirmed, recovered, deaths],
+                },
+              ],
+            }}
+            options={{
+              legend: { display: false },
+              title: {
+                display: true,
+                text: `Current covid-19 stats in ${name}`,
+              },
+            }}
+          />
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };
@@ -94,6 +127,10 @@ export const getServerSideProps = async (pageContext) => {
   }
 
   const { data } = await countryDet.get(nameOfCountry);
+  const {
+    data: { confirmed, recovered, deaths },
+  } = await covid.get(`countries/${nameOfCountry}`);
+  console.log(confirmed);
   return {
     props: {
       name: data.name,
@@ -106,6 +143,9 @@ export const getServerSideProps = async (pageContext) => {
       currencies: data.currencies,
       languages: data.languages,
       borders: data.borders,
+      confirmed: confirmed.value,
+      recovered: recovered.value,
+      deaths: deaths.value,
     },
   };
 };

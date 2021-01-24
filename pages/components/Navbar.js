@@ -6,12 +6,14 @@ import styles from "../../styles/Navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles.Navbar}>
-      <Link href="/">
-        <h1 className={styles.title}>Where in the world?</h1>
-      </Link>
-      <div>
-        <BsMoon style={{ marginRight: "0.5rem" }} />
-        Dark Mode
+      <div className={styles.grid}>
+        <Link href="/">
+          <h1 className={styles.title}>Where in the world?</h1>
+        </Link>
+        <div>
+          <BsMoon style={{ marginRight: "0.5rem" }} />
+          Dark Mode
+        </div>
       </div>
     </div>
   );

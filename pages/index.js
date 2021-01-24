@@ -4,7 +4,6 @@ import { countries } from "./api/countries";
 import { useEffect, useState } from "react";
 import CountryList from "./components/CountryList";
 import RegionFormSelect from "./components/RegionFormSelect";
-import SearchForm from "./components/SearchForm";
 
 export default function Home() {
   const [initialState, setInitialState] = useState([]);
@@ -40,7 +39,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.searchContainer}>
-        <SearchForm />
         <RegionFormSelect setInitialState={setInitialState} />
       </div>
       <div className={styles.countryContainer}>
