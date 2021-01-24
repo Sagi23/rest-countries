@@ -1,0 +1,16 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0rem 0.2rem 0.5rem 0rem rgba(0, 0, 0, 0.39);
+}
+
+.title {
+  cursor: pointer;
+}
+
+.Navbar div {
+  display: flex;
+  align-items: center;
+}

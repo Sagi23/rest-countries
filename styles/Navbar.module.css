@@ -1,0 +1,28 @@
+.Navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2rem;
+  -webkit-box-shadow: 0rem 0.2rem 0.5rem 0rem rgba(0, 0, 0, 0.39);
+          box-shadow: 0rem 0.2rem 0.5rem 0rem rgba(0, 0, 0, 0.39);
+}
+
+.title {
+  cursor: pointer;
+}
+
+.Navbar div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=Navbar.module.css.map */

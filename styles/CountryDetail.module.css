@@ -1,0 +1,29 @@
+.grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  margin: 6rem auto 0;
+  gap: 3rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flag img {
+  width: 600px;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.137);
+}
+
+.right {
+  width: 600px;
+  height: 400px;
+}
+
+.right .subTitle {
+  font-weight: 500;
+}
+/*# sourceMappingURL=CountryDetail.module.css.map */

@@ -1,0 +1,36 @@
+.Country {
+  max-width: 320px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.Country img {
+  width: 320px;
+  height: 170px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.details {
+  margin: 1rem;
+}
+
+.details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.details ul li {
+  margin: 0.3em 0;
+}
+
+.details ul li .counter {
+  font-weight: 400;
+}
+
+.details span {
+  font-weight: 500;
+}
+/*# sourceMappingURL=Country.module.css.map */
