@@ -49,7 +49,8 @@ const CountryDetail = ({
       </div>
       <div className={styles.grid}>
         <div className={styles.flag}>
-          <Image src={flag} alt={name} width={600} height={400} />
+          {/* <Image src={flag} alt={name} width={600} height={400} /> */}
+          <img src={flag} alt={name} />
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
