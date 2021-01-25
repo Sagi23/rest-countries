@@ -34,6 +34,8 @@
 }
 
 .flag img {
+  width: 600px;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   border: 1px solid rgba(0, 0, 0, 0.137);

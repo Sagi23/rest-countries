@@ -4,6 +4,8 @@
   border-radius: 10px;
 
   img {
+    width: 320px;
+    height: 170px;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -12,8 +14,13 @@
 }
 
 .details {
-  h3 {
+  .title {
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
+    &:hover {
+      color: rgb(68, 180, 255);
+    }
   }
   margin: 1rem;
   ul {

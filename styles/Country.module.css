@@ -5,6 +5,8 @@
 }
 
 .Country img {
+  width: 320px;
+  height: 170px;
   -o-object-fit: cover;
      object-fit: cover;
   border-top-left-radius: 10px;
@@ -16,8 +18,14 @@
   margin: 1rem;
 }
 
-.details h3 {
+.details .title {
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.details .title:hover {
+  color: #44b4ff;
 }
 
 .details ul {

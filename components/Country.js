@@ -14,7 +14,7 @@ const Country = ({
       </Link>
       <div className={styles.details}>
         <Link href={`/country/${alpha3Code}`}>
-          <h3>{name}</h3>
+          <p className={styles.title}>{name}</p>
         </Link>
         <ul>
           <li>
