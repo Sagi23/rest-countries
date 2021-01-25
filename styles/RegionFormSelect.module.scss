@@ -1,17 +1,19 @@
 .selector {
-  width: 200px;
+  width: 250px;
   padding: 0.2rem 2rem 0.2rem 1rem;
   font-size: 18px;
   border: none;
   border-radius: 5px;
   margin-right: 1rem;
+  background-color: transparent;
 }
 
 .btn {
+  width: 55px;
   cursor: pointer;
   border: none;
-  background-color: white;
-  padding: 0.35rem 1rem;
+  background-color: transparent;
+  // padding: 0.35rem 1rem;
   border-radius: 5px;
 }
 
@@ -21,4 +23,5 @@
   box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.185);
   border-radius: 5px;
   background-color: white;
+  width: fit-content;
 }

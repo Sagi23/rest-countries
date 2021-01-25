@@ -1,6 +1,6 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { countries, covid } from "./api/countries";
+import { BsSearch } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import CountryList from "../components/CountryList";
 import RegionFormSelect from "../components/RegionFormSelect";
@@ -8,15 +8,18 @@ import BarChart from "../components/BarChart";
 
 export default function Home({ confirmed, recovered, deaths }) {
   const [initialState, setInitialState] = useState([]);
+  const [allCountries, setAllCountries] = useState([]);
+  const [searchedCountries, setSearchedCountries] = useState([]);
+  const [search, setSearch] = useState("");
 
   let rand = 0;
+  let randomCountry = [];
 
   const randNum = () => {
     return (rand = Math.floor(Math.random() * 250) + 1);
   };
 
   const randCountries = (data) => {
-    const randomCountry = [];
     while (randomCountry.length < 8) {
       const r = randNum();
       if (randomCountry.includes(data[r]) === false) {
@@ -30,18 +33,43 @@ export default function Home({ confirmed, recovered, deaths }) {
     const getCountries = async () => {
       const { data } = await countries.get();
       randCountries(data);
+      setAllCountries(data);
     };
 
     getCountries();
   }, []);
 
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    setSearchedCountries(
+      allCountries.filter((country) =>
+        country.name.toLowerCase().includes(search)
+      )
+    );
+  };
+
+  console.log(randomCountry);
   return (
     <div className={styles.container}>
       <div className={styles.searchContainer}>
+        <div className={styles.selector}>
+          <BsSearch />
+          <input
+            type="text"
+            className={styles.input}
+            value={search}
+            onChange={(e) => handleChange(e)}
+            placeholder="Search for a country..."
+          />
+        </div>
         <RegionFormSelect setInitialState={setInitialState} />
       </div>
       <div className={styles.countryContainer}>
-        <CountryList initialStates={initialState} />
+        {search === "" ? (
+          <CountryList initialStates={initialState} />
+        ) : (
+          <CountryList initialStates={searchedCountries} />
+        )}
       </div>
       <div className={styles.barChart}>
         <BarChart
