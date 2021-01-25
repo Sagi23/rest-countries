@@ -17,6 +17,7 @@ const CountryDetail = ({
   currencies,
   languages,
   borders,
+  alpha3Code,
 }) => {
   const [confirmed, setConfirmed] = useState(null);
   const [recovered, setRecovered] = useState(null);
@@ -33,8 +34,8 @@ const CountryDetail = ({
         console.log(error);
       }
     };
-    getCovidData(name);
-  }, []);
+    getCovidData(alpha3Code);
+  }, [alpha3Code]);
 
   const router = useRouter();
   return (
@@ -93,7 +94,7 @@ const CountryDetail = ({
                       className={styles.borderLink}
                       onClick={() => router.push(`/country/${b}`)}
                     >
-                      {`${b}`}
+                      {b}
                     </span>
                   ))}
                 </div>
@@ -138,8 +139,8 @@ const CountryDetail = ({
           />
         ) : (
           <h4>
-            There is no information about covid-19 cases in {`${name}`} our
-            database
+            There is no information about covid-19 cases in {name} in our
+            database.
           </h4>
         )}
       </div>
@@ -162,6 +163,7 @@ export const getServerSideProps = async (pageContext) => {
       currencies: data.currencies,
       languages: data.languages,
       borders: data.borders,
+      alpha3Code: data.alpha3Code,
     },
   };
 };

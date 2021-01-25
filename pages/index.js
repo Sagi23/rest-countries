@@ -19,7 +19,9 @@ export default function Home({ confirmed, recovered, deaths }) {
     const randomCountry = [];
     while (randomCountry.length < 8) {
       const r = randNum();
-      randomCountry.push(data[r]);
+      if (randomCountry.includes(data[r]) === false) {
+        randomCountry.push(data[r]);
+      }
     }
     return setInitialState(randomCountry);
   };
