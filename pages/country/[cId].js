@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
+import Image from "next/image";
 import { countryDet, covid } from "../api/countries";
-import { Bar } from "react-chartjs-2";
 import styles from "../../styles/CountryDetail.module.css";
+import BarChart from "../../components/BarChart";
 
 const CountryDetail = ({
   name,
@@ -38,6 +39,7 @@ const CountryDetail = ({
   }, [alpha3Code]);
 
   const router = useRouter();
+
   return (
     <div className={styles.CountryDetail}>
       <div className={styles.goBackBtn}>
@@ -47,7 +49,7 @@ const CountryDetail = ({
       </div>
       <div className={styles.grid}>
         <div className={styles.flag}>
-          <img src={flag} alt={name} />
+          <Image src={flag} alt={name} width={600} height={400} />
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
@@ -105,37 +107,11 @@ const CountryDetail = ({
       </div>
       <div className={styles.barChart}>
         {confirmed ? (
-          <Bar
-            data={{
-              labels: ["Infected", "Recovered", "Deaths"],
-              datasets: [
-                {
-                  label: "People",
-                  backgroundColor: [
-                    "rgba(0, 0, 255, 0.5)",
-                    "rgba(0, 128, 0, 0.5)",
-                    "rgba(255, 0, 0, 0.5)",
-                  ],
-                  data: [confirmed, recovered, deaths],
-                },
-              ],
-            }}
-            options={{
-              tooltips: {
-                callbacks: {
-                  label: function (tooltipItem, data) {
-                    return tooltipItem.yLabel
-                      .toFixed(2)
-                      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                  },
-                },
-              },
-              legend: { display: false },
-              title: {
-                display: true,
-                text: `Current covid-19 stats in ${name}`,
-              },
-            }}
+          <BarChart
+            confirmed={confirmed}
+            recovered={recovered}
+            deaths={deaths}
+            text={`Current covid-19 stats in ${name}`}
           />
         ) : (
           <h4>
