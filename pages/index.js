@@ -38,7 +38,7 @@ export default function Home({ confirmed, recovered, deaths }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Where In The World</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.searchContainer}>

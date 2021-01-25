@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { BsMoon } from "react-icons/bs";
+import { AiOutlineGithub } from "react-icons/ai";
 import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
@@ -11,8 +11,13 @@ const Navbar = () => {
           <h1 className={styles.title}>Where in the world?</h1>
         </Link>
         <div>
-          <BsMoon style={{ marginRight: "0.5rem" }} />
-          Dark Mode
+          <a
+            href="https://github.com/Sagi23"
+            target="_blank"
+            rel="noopener noreffer"
+          >
+            <AiOutlineGithub size={40} />
+          </a>
         </div>
       </div>
     </div>
