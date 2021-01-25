@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
-import Image from "next/image";
+// import Image from "next/image";
 import { countryDet, covid } from "../api/countries";
 import styles from "../../styles/CountryDetail.module.css";
 import BarChart from "../../components/BarChart";
@@ -128,6 +128,23 @@ const CountryDetail = ({
 export const getServerSideProps = async (pageContext) => {
   const nameOfCountry = pageContext.query.cId;
   const { data } = await countryDet.get(nameOfCountry);
+  if (!data) {
+    return {
+      props: {
+        name: "",
+        population: "",
+        region: "",
+        subRegion: "",
+        flag: "",
+        capital: "",
+        nativeName: "",
+        currencies: [],
+        languages: [],
+        borders: [],
+        alpha3Code: "",
+      },
+    };
+  }
   return {
     props: {
       name: data.name,

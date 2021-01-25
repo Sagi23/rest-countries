@@ -5,6 +5,8 @@
 }
 
 .Country img {
+  width: 320px;
+  height: 170px;
   -o-object-fit: cover;
      object-fit: cover;
   border-top-left-radius: 10px;

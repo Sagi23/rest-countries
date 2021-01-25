@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACX,OAAO,EAAE,IAAI;EACb,GAAG,EAAE,IAAI;EACT,SAAS,EAAE,IAAI;EACf,MAAM,EAAE,MAAM;EACd,eAAe,EAAE,aAAa;CAC/B;;AAED,MAAM,EAAE,SAAS,EAAE,KAAK;EACtB,AAAA,YAAY,CAAC;IACX,eAAe,EAAE,MAAM;GACxB",
+    "sources": [
+        "CountryList.module.scss"
+    ],
+    "names": [],
+    "file": "CountryList.module.css"
+}

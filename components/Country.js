@@ -1,6 +1,6 @@
 import React from "react";
 import CountUp from "react-countup";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Country.module.css";
 
