@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { regionCountries } from "../api/countries";
-import styles from "../../styles/RegionFormSelect.module.css";
+import { regionCountries } from "../pages/api/countries";
+import styles from "../styles/RegionFormSelect.module.css";
 
 const RegionFormSelect = ({ setInitialState }) => {
   const [value, setValue] = useState("");
 
   const changeRegion = async (region) => {
     const { data } = await regionCountries.get(region);
-    console.log(data);
     setInitialState(data);
   };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import CountUp from "react-countup";
 import Link from "next/link";
-import styles from "../../styles/Country.module.css";
+import styles from "../styles/Country.module.css";
 
 const Country = ({
   data: { name, flag, population, capital, region, alpha3Code },

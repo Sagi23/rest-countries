@@ -2,8 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { countries, covid } from "./api/countries";
 import { useEffect, useState } from "react";
-import CountryList from "./components/CountryList";
-import RegionFormSelect from "./components/RegionFormSelect";
+import CountryList from "../components/CountryList";
+import RegionFormSelect from "../components/RegionFormSelect";
 import { Bar } from "react-chartjs-2";
 
 export default function Home({ confirmed, recovered, deaths }) {

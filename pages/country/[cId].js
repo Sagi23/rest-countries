@@ -23,9 +23,9 @@ const CountryDetail = ({
   const [deaths, setDeaths] = useState(null);
 
   useEffect(() => {
-    const getCovidData = async (nameOfCountry) => {
+    const getCovidData = async (codeOfCountry) => {
       try {
-        const { data } = await covid.get(`countries/${nameOfCountry}`);
+        const { data } = await covid.get(`countries/${codeOfCountry}`);
         setConfirmed(data.confirmed.value);
         setRecovered(data.recovered.value);
         setDeaths(data.deaths.value);

@@ -12,3 +12,6 @@ export const covid = axios.create({
 export const regionCountries = axios.create({
   baseURL: `https://restcountries.eu/rest/v2/region/`,
 });
+export const countryName = axios.create({
+  baseURL: `https://restcountries.eu/rest/v2/name/`,
+});
