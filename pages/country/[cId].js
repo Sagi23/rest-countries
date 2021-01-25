@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
@@ -17,10 +17,25 @@ const CountryDetail = ({
   currencies,
   languages,
   borders,
-  confirmed,
-  recovered,
-  deaths,
 }) => {
+  const [confirmed, setConfirmed] = useState(null);
+  const [recovered, setRecovered] = useState(null);
+  const [deaths, setDeaths] = useState(null);
+
+  useEffect(() => {
+    const getCovidData = async (nameOfCountry) => {
+      try {
+        const { data } = await covid.get(`countries/${nameOfCountry}`);
+        setConfirmed(data.confirmed.value);
+        setRecovered(data.recovered.value);
+        setDeaths(data.deaths.value);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCovidData(name);
+  }, []);
+
   const router = useRouter();
   return (
     <div className={styles.CountryDetail}>
@@ -121,7 +136,12 @@ const CountryDetail = ({
               },
             }}
           />
-        ) : null}
+        ) : (
+          <h4>
+            There is no information about covid-19 cases in {`${name}`} our
+            database
+          </h4>
+        )}
       </div>
     </div>
   );
@@ -129,16 +149,7 @@ const CountryDetail = ({
 
 export const getServerSideProps = async (pageContext) => {
   const nameOfCountry = pageContext.query.cId;
-  if (!nameOfCountry) {
-    return {
-      notFound: true,
-    };
-  }
-
   const { data } = await countryDet.get(nameOfCountry);
-  const {
-    data: { confirmed, recovered, deaths },
-  } = await covid.get(`countries/${nameOfCountry}`);
   return {
     props: {
       name: data.name,
@@ -151,9 +162,6 @@ export const getServerSideProps = async (pageContext) => {
       currencies: data.currencies,
       languages: data.languages,
       borders: data.borders,
-      confirmed: confirmed.value,
-      recovered: recovered.value,
-      deaths: deaths.value,
     },
   };
 };
