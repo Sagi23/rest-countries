@@ -36,4 +36,12 @@
   margin-top: 3rem;
   width: 80%;
 }
+
+@media (max-width: 900px) {
+  .searchContainer {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 /*# sourceMappingURL=Home.module.css.map */

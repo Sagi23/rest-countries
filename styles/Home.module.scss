@@ -23,3 +23,9 @@
   margin-top: 3rem;
   width: 80%;
 }
+
+@media (max-width: 900px) {
+  .searchContainer {
+    justify-content: center;
+  }
+}

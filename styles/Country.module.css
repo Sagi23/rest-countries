@@ -38,4 +38,13 @@
 .details span {
   font-weight: 500;
 }
+
+@media (max-width: 600px) {
+  .Country {
+    max-width: 250px;
+  }
+  .Country img {
+    width: 250px;
+  }
+}
 /*# sourceMappingURL=Country.module.css.map */

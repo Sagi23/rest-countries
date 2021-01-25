@@ -10,4 +10,12 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+@media (max-width: 900px) {
+  .CountryList {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 /*# sourceMappingURL=CountryList.module.css.map */

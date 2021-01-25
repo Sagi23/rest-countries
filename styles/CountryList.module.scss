@@ -5,3 +5,9 @@
   margin: 0 auto;
   justify-content: space-between;
 }
+
+@media (max-width: 900px) {
+  .CountryList {
+    justify-content: center;
+  }
+}
