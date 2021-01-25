@@ -42,8 +42,8 @@
 
 @media (max-width: 900px) {
   .searchContainer {
+    display: grid;
     justify-content: center;
-    flex-direction: column;
     gap: 1rem;
   }
   .selector {
