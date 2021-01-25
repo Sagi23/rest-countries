@@ -22,6 +22,7 @@ const RegionFormSelect = ({ setInitialState }) => {
   return (
     <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
       <button className={styles.btn}>
+        <p style={{ display: "none" }}>Search</p>
         <BsSearch />
       </button>
       <select

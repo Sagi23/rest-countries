@@ -10,13 +10,15 @@ const Navbar = () => {
         <Link href="/">
           <h1 className={styles.title}>Where in the world?</h1>
         </Link>
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <a
             href="https://github.com/Sagi23"
             target="_blank"
             rel="noopener noreffer"
           >
             <AiOutlineGithub size={40} />
+            <br />
+            Github
           </a>
         </div>
       </div>

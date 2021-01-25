@@ -37,10 +37,6 @@ export default function Home({ confirmed, recovered, deaths }) {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Where In The World</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className={styles.searchContainer}>
         <RegionFormSelect setInitialState={setInitialState} />
       </div>
