@@ -25,3 +25,9 @@
   background-color: white;
   width: fit-content;
 }
+
+@media (max-width: 900px) {
+  .form {
+    width: 250px;
+  }
+}

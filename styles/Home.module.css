@@ -65,5 +65,14 @@
             flex-direction: column;
     gap: 1rem;
   }
+  .selector {
+    width: 250px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .input {
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=Home.module.css.map */

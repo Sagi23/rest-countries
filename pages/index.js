@@ -48,7 +48,6 @@ export default function Home({ confirmed, recovered, deaths }) {
     );
   };
 
-  console.log(randomCountry);
   return (
     <div className={styles.container}>
       <div className={styles.searchContainer}>
