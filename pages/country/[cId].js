@@ -31,9 +31,7 @@ const CountryDetail = ({
         setConfirmed(data.confirmed.value);
         setRecovered(data.recovered.value);
         setDeaths(data.deaths.value);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
     getCovidData(alpha3Code);
   }, [alpha3Code]);
