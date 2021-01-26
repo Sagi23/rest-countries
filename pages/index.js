@@ -20,7 +20,7 @@ export default function Home({ confirmed, recovered, deaths }) {
   };
 
   const randCountries = (data) => {
-    while (randomCountry.length < 8) {
+    while (randomCountry.length < 4) {
       const r = randNum();
       if (randomCountry.includes(data[r]) === false) {
         randomCountry.push(data[r]);
@@ -52,7 +52,7 @@ export default function Home({ confirmed, recovered, deaths }) {
     <div className={styles.container}>
       <div className={styles.searchContainer}>
         <div className={styles.selector}>
-          <BsSearch />
+          <BsSearch className={styles.hide} />
           <input
             type="text"
             className={styles.input}

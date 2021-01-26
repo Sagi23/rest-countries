@@ -1,33 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsSearch } from "react-icons/bs";
+import { useRouter } from "next/router";
 import { regionCountries } from "../pages/api/countries";
 import styles from "../styles/RegionFormSelect.module.css";
 
 const RegionFormSelect = ({ setInitialState }) => {
-  const [value, setValue] = useState("");
-
+  const router = useRouter();
   const changeRegion = async (region) => {
+    if (region === "select") {
+      return router.push("/");
+    }
     const { data } = await regionCountries.get(region);
     setInitialState(data);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (value === "select") {
-      return alert("please select a region");
-    }
-    changeRegion(value);
-  };
-
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
-      <button className={styles.btn}>
-        <p style={{ display: "none" }}>Search</p>
-        <BsSearch />
-      </button>
+    <div className={styles.selector}>
+      <BsSearch className={styles.hide} />
       <select
-        className={styles.selector}
-        onChange={(e) => setValue(e.target.value)}
+        className={styles.input}
+        onChange={(e) => changeRegion(e.target.value)}
       >
         <option value="select">Select Region</option>
         <option value="africa">Africa</option>
@@ -36,7 +28,7 @@ const RegionFormSelect = ({ setInitialState }) => {
         <option value="europe">Europe</option>
         <option value="oceania">Oceania</option>
       </select>
-    </form>
+    </div>
   );
 };
 

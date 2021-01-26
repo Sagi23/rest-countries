@@ -2,12 +2,13 @@
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 3em auto 0;
   justify-content: space-between;
 }
 
 @media (max-width: 900px) {
   .CountryList {
     justify-content: center;
+    margin: 1em;
   }
 }
