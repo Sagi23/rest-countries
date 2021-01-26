@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
-// import Image from "next/image";
+import Image from "next/image";
 import { countryDet, covid } from "../api/countries";
 import styles from "../../styles/CountryDetail.module.css";
 import BarChart from "../../components/BarChart";
@@ -47,8 +47,7 @@ const CountryDetail = ({
       </div>
       <div className={styles.grid}>
         <div className={styles.flag}>
-          {/* <Image src={flag} alt={name} width={600} height={400} /> */}
-          <img src={flag} alt={name} />
+          <Image src={flag} alt={name} width={600} height={400} />
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
