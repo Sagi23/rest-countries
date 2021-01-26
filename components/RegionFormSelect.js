@@ -12,6 +12,7 @@ const RegionFormSelect = ({ setInitialState }) => {
     }
     const { data } = await regionCountries.get(region);
     setInitialState(data);
+    router.push(`/region/${region}`);
   };
 
   return (
