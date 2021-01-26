@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { regionCountries } from "../api/countries";
 import styles from "../../styles/Home.module.css";
-import { BsSearch } from "react-icons/bs";
 import CountryList from "../../components/CountryList";
-import RegionFormSelect from "../../components/RegionFormSelect";
+import SearchContainer from "../../components/SearchContainer";
 
 const Region = ({ data }) => {
   const [initialState, setInitialState] = useState([]);
@@ -14,28 +13,15 @@ const Region = ({ data }) => {
     setInitialState(data);
   }, [data]);
 
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-    setSearchedCountries(
-      data.filter((country) => country.name.toLowerCase().includes(search))
-    );
-  };
-
   return (
     <div className={styles.container}>
-      <div className={styles.searchContainer}>
-        <div className={styles.selector}>
-          <BsSearch className={styles.hide} />
-          <input
-            type="text"
-            className={styles.input}
-            value={search}
-            onChange={(e) => handleChange(e)}
-            placeholder="Search for a country..."
-          />
-        </div>
-        <RegionFormSelect setInitialState={setInitialState} />
-      </div>
+      <SearchContainer
+        setSearch={setSearch}
+        search={search}
+        setSearchedCountries={setSearchedCountries}
+        setInitialState={setInitialState}
+        data={data}
+      />
       <div className={styles.countryContainer}>
         {search === "" ? (
           <CountryList initialStates={initialState} />

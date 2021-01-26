@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
-import Image from "next/image";
 import { countryDet, covid } from "../api/countries";
 import styles from "../../styles/CountryDetail.module.css";
 import BarChart from "../../components/BarChart";
@@ -20,9 +19,9 @@ const CountryDetail = ({
   borders,
   alpha3Code,
 }) => {
-  const [confirmed, setConfirmed] = useState(null);
-  const [recovered, setRecovered] = useState(null);
-  const [deaths, setDeaths] = useState(null);
+  const [confirmed, setConfirmed] = useState(0);
+  const [recovered, setRecovered] = useState(0);
+  const [deaths, setDeaths] = useState(0);
 
   useEffect(() => {
     const getCovidData = async (codeOfCountry) => {
@@ -31,7 +30,9 @@ const CountryDetail = ({
         setConfirmed(data.confirmed.value);
         setRecovered(data.recovered.value);
         setDeaths(data.deaths.value);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     getCovidData(alpha3Code);
   }, [alpha3Code]);
@@ -47,7 +48,7 @@ const CountryDetail = ({
       </div>
       <div className={styles.grid}>
         <div className={styles.flag}>
-          <Image src={flag} alt={name} width={600} height={400} />
+          <img src={flag} alt={name} />
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
