@@ -36,7 +36,6 @@ const Region = ({ data }) => {
 export const getServerSideProps = async (pageContext) => {
   const regionOfCountries = pageContext.query.rId;
   const { data } = await regionCountries.get(regionOfCountries);
-  console.log(data);
   if (!data) {
     return {
       props: {
