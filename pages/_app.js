@@ -5,7 +5,7 @@ import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Where In The World</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
           content="check your favorite country covid-19 stats daily"
         />
         <html lang="en" />
-      </Head> */}
+      </Head>
       <Navbar />
       <Component {...pageProps} />
     </>
