@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
+import Loader from "react-loaders";
 import { countryDet, covid } from "../api/countries";
 import styles from "../../styles/CountryDetail.module.css";
 import BarChart from "../../components/BarChart";
@@ -22,9 +23,11 @@ const CountryDetail = ({
   const [confirmed, setConfirmed] = useState(0);
   const [recovered, setRecovered] = useState(0);
   const [deaths, setDeaths] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getCovidData = async (codeOfCountry) => {
+      setIsLoading(true);
       try {
         const { data } = await covid.get(`countries/${codeOfCountry}`);
         setConfirmed(data.confirmed.value);
@@ -33,11 +36,20 @@ const CountryDetail = ({
       } catch (error) {
         console.log(error);
       }
+      setIsLoading(false);
     };
     getCovidData(alpha3Code);
   }, [alpha3Code]);
 
   const router = useRouter();
+
+  if (isLoading) {
+    return (
+      <div style={{ height: "100vh", placeSelf: "center center" }}>
+        <Loader type="line-scale" />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.CountryDetail}>

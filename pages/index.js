@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import { countries, covid } from "./api/countries";
 import { useEffect, useState } from "react";
 import CountryList from "../components/CountryList";
+import Loader from "react-loaders";
 import BarChart from "../components/BarChart";
 import SearchContainer from "../components/SearchContainer";
 
@@ -10,6 +11,7 @@ export default function Home({ confirmed, recovered, deaths }) {
   const [allCountries, setAllCountries] = useState([]);
   const [searchedCountries, setSearchedCountries] = useState([]);
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   let rand = 0;
   let randomCountry = [];
@@ -30,13 +32,23 @@ export default function Home({ confirmed, recovered, deaths }) {
 
   useEffect(() => {
     const getCountries = async () => {
+      setIsLoading(true);
       const { data } = await countries.get();
       randCountries(data);
       setAllCountries(data);
+      setIsLoading(false);
     };
 
     getCountries();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div style={{ height: "100vh", placeSelf: "center center" }}>
+        <Loader type="line-scale" />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
