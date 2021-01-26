@@ -10,9 +10,9 @@ const RegionFormSelect = ({ setInitialState }) => {
     if (region === "select") {
       return router.push("/");
     }
+    router.push(`/region/${region}`);
     const { data } = await regionCountries.get(region);
     setInitialState(data);
-    router.push(`/region/${region}`);
   };
 
   return (
