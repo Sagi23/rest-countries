@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { regionCountries } from "../api/countries";
+import { regionCountries, countries } from "../api/countries";
 import styles from "../../styles/Home.module.css";
 import CountryList from "../../components/CountryList";
 import SearchContainer from "../../components/SearchContainer";
@@ -33,20 +33,21 @@ const Region = ({ data }) => {
   );
 };
 
-export const getServerSideProps = async (pageContext) => {
-  const regionOfCountries = pageContext.query.rId;
-  const { data } = await regionCountries.get(regionOfCountries);
-  if (!data) {
-    return {
-      props: {
-        data: "",
-      },
-    };
-  }
+export const getStaticProps = async (pageContext) => {
+  const { rId } = pageContext.params;
+  const res = await regionCountries.get(rId);
+  return { props: { data: res.data } };
+};
+
+export const getStaticPaths = async () => {
+  const { data } = await countries.get();
+  const regionOfCountry = data.map((rName) => rName.region);
+  const mySet = new Set(regionOfCountry);
+  const myArray = Array.from(mySet);
+  const paths = myArray.map((rId) => ({ params: { rId } }));
   return {
-    props: {
-      data,
-    },
+    paths,
+    fallback: false,
   };
 };
 
