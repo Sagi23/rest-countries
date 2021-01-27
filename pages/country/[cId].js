@@ -3,7 +3,7 @@ import CountUp from "react-countup";
 import { useRouter } from "next/router";
 import { BiArrowBack } from "react-icons/bi";
 import Loader from "react-loaders";
-import { countryDet, covid } from "../api/countries";
+import { countries, countryDet, covid } from "../api/countries";
 import styles from "../../styles/CountryDetail.module.css";
 import BarChart from "../../components/BarChart";
 
@@ -135,8 +135,8 @@ const CountryDetail = ({
   );
 };
 
-export const getServerSideProps = async (pageContext) => {
-  const nameOfCountry = pageContext.query.cId;
+export const getStaticProps = async ({ params }) => {
+  const nameOfCountry = params.cId;
   const { data } = await countryDet.get(nameOfCountry);
   if (!data) {
     return {
@@ -169,6 +169,16 @@ export const getServerSideProps = async (pageContext) => {
       borders: data.borders,
       alpha3Code: data.alpha3Code,
     },
+  };
+};
+
+export const getStaticPaths = async () => {
+  const { data } = await countries.get();
+  const codeOfCountry = data.map((cName) => cName.alpha3Code);
+  const paths = codeOfCountry.map((cId) => ({ params: { cId } }));
+  return {
+    paths,
+    fallback: false,
   };
 };
 
