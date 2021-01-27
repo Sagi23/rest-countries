@@ -1,15 +1,18 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { regionCountries } from "../pages/api/countries";
 import styles from "../styles/RegionFormSelect.module.css";
 
-const RegionFormSelect = () => {
+const RegionFormSelect = ({ setInitialState }) => {
   const router = useRouter();
   const changeRegion = async (region) => {
     if (region === "select") {
       return router.push("/");
     }
     router.push(`/region/${region}`);
+    const { data } = await regionCountries.get(region);
+    setInitialState(data);
   };
 
   return (
